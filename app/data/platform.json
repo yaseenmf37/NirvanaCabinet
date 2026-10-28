@@ -1,0 +1,710 @@
+{
+  "companies": [
+    {
+      "id": "co-nirvana",
+      "name": "نیروانا کابینت",
+      "kind": "full_service"
+    },
+    {
+      "id": "co-studio",
+      "name": "استودیو اندازه‌گیری آریا",
+      "kind": "specialist"
+    }
+  ],
+  "users": [
+    {
+      "id": "u-saeid",
+      "name": "سعید محبی",
+      "phone": "09120000001",
+      "password": "scrypt$da12d8a7cbb35ffd1e7d118cd7c373ba$ef33262733b3495b882cd68a77182354b0eefd7c6c93cefce338094bb648a7a9c3bb8285c43a4c14360f4f85d007b3b0aed8facf379c23f1abd4eb622f8cd1f4",
+      "role": "project_manager",
+      "roleLabel": "مدیر پروژه",
+      "companyId": "co-nirvana",
+      "modules": [
+        "projects",
+        "planning",
+        "analysis",
+        "cutting",
+        "assembly",
+        "installation",
+        "logistics",
+        "reports",
+        "employees",
+        "settings"
+      ]
+    },
+    {
+      "id": "u-leila",
+      "name": "لیلا فرهادی",
+      "phone": "09120000002",
+      "password": "scrypt$8e7950c7cee55c4047a22f77e179308a$b597e37902daf80a7e49c9eef122e6979f693c28e5d0319439a730c0cbda312215ccce9c944be20f5698e7e4b0effd0842d5eb58c4e06324b40cc163271ec2aa",
+      "role": "production_manager",
+      "roleLabel": "مدیر تولید",
+      "companyId": "co-nirvana",
+      "modules": [
+        "projects",
+        "analysis",
+        "cutting",
+        "assembly",
+        "reports"
+      ]
+    },
+    {
+      "id": "u-reza",
+      "name": "رضا کاظمی",
+      "phone": "09120000003",
+      "password": "scrypt$416620f184be129c0a4058702cf0867d$d8dc1fc9a5fffc216b5f6a35ac64719fd8f6b34b4ed8984a76cf0c899aac5e2281d83fee0715d16cf0df7492289be697c3d7c92d556224d529c3ad2aa8fbea46",
+      "role": "installer",
+      "roleLabel": "نصاب",
+      "companyId": "co-nirvana",
+      "modules": [
+        "projects",
+        "installation",
+        "logistics"
+      ]
+    },
+    {
+      "id": "u-nasteran",
+      "name": "نسترن قاسمی",
+      "phone": "09120000004",
+      "password": "scrypt$f0f5333eb6aa4313a2f67db7294ee07e$01ea4a74ecacff6d8666c355ba39d711821de38fcb5c47e39db4acc86b0cfc485042cf78b0b5c8664461edce3c87439628c6cbf08a10bef71d1af53fdf93996d",
+      "role": "planner",
+      "roleLabel": "متخصص اندازه‌گیری",
+      "companyId": "co-nirvana",
+      "modules": [
+        "projects",
+        "planning"
+      ]
+    },
+    {
+      "id": "u-aria",
+      "name": "آریا سلیمانی",
+      "phone": "09120000005",
+      "password": "scrypt$44f0e00b73ab189a310e83787edc85be$93dd95fd07a745ea3f39d72eb1ce3fa96c0f0addc84406db35b58144ff62de72082c77635f8fe23bb623c34593acc98436795ba448a593f6f1d01554f7a26528",
+      "role": "specialist",
+      "roleLabel": "متخصص مستقل",
+      "companyId": "co-studio",
+      "modules": [
+        "projects",
+        "planning"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-1",
+      "companyId": "co-nirvana",
+      "name": "نوسازی آشپزخانه ۱۲",
+      "client": "خانه رضایی",
+      "stage": "cutting",
+      "status": "review",
+      "ownerId": "u-saeid",
+      "memberIds": [
+        "u-nasteran",
+        "u-leila",
+        "u-reza"
+      ],
+      "progress": 50,
+      "createdAt": "2026-10-23T20:38:19.538Z",
+      "updatedAt": "2026-10-27T16:27:02.068Z",
+      "auditHistory": [
+        {
+          "id": "ev-22e4dd86-6809-4f18-8df0-8a8324cb6b50",
+          "at": "2026-10-27T00:13:45.348Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "project_updated",
+          "detail": "status: review -> active, stage: planning -> cutting, progress: 28 -> 41"
+        },
+        {
+          "id": "ev-b39b5d61-0679-4286-864f-192546c9bea7",
+          "at": "2026-10-27T00:13:45.641Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "project_updated",
+          "detail": "status: active -> review, stage: cutting -> planning, progress: 41 -> 28"
+        },
+        {
+          "id": "ev-59d56be4-505e-4cc6-b91e-da911d6cf96e",
+          "at": "2026-10-27T16:27:02.068Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "project_updated",
+          "detail": "stage: planning -> cutting, progress: 28 -> 50"
+        }
+      ]
+    },
+    {
+      "id": "proj-2",
+      "companyId": "co-nirvana",
+      "name": "دکوراسیون فروشگاه",
+      "client": "فروشگاه نور",
+      "stage": "assembly",
+      "status": "active",
+      "ownerId": "u-leila",
+      "memberIds": [
+        "u-leila",
+        "u-saeid"
+      ],
+      "progress": 64,
+      "createdAt": "2026-10-23T20:38:19.538Z",
+      "updatedAt": "2026-10-23T20:38:19.538Z"
+    },
+    {
+      "id": "proj-3",
+      "companyId": "co-nirvana",
+      "name": "ویلای شمالی",
+      "client": "خانواده کریمی",
+      "stage": "cutting",
+      "status": "completed",
+      "ownerId": "u-reza",
+      "memberIds": [
+        "u-reza",
+        "u-saeid"
+      ],
+      "progress": 38,
+      "createdAt": "2026-10-23T20:38:19.538Z",
+      "updatedAt": "2026-10-27T00:14:09.428Z",
+      "auditHistory": [
+        {
+          "id": "ev-7457c7ea-88af-426a-95fb-5e27bc4c70b9",
+          "at": "2026-10-27T00:14:09.428Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "project_updated",
+          "detail": "status: waiting_approval -> completed, stage: installation -> cutting, progress: 84 -> 38"
+        }
+      ]
+    },
+    {
+      "id": "proj-4",
+      "companyId": "co-studio",
+      "name": "اندازه‌گیری واحد ۷",
+      "client": "پروژه مستقل",
+      "stage": "analysis",
+      "status": "active",
+      "ownerId": "u-aria",
+      "memberIds": [
+        "u-aria"
+      ],
+      "progress": 55,
+      "createdAt": "2026-10-23T20:38:19.538Z",
+      "updatedAt": "2026-10-25T16:08:48.100Z"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "room-1",
+      "projectId": "proj-1",
+      "companyId": "co-nirvana",
+      "name": "آشپزخانه اصلی",
+      "heightCm": 280,
+      "vertices": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 420,
+          "y": 0
+        },
+        {
+          "x": 420,
+          "y": 310
+        },
+        {
+          "x": 0,
+          "y": 310
+        }
+      ],
+      "hiddenWalls": [],
+      "ceilingHidden": false,
+      "openings": [
+        {
+          "id": "op-2",
+          "kind": "door",
+          "wallIndex": 3,
+          "offsetCm": 80,
+          "widthCm": 200,
+          "heightCm": 120,
+          "sillHeightCm": 0
+        },
+        {
+          "id": "opening-b8e32843-da8a-4b2d-b280-772a7cd81a93",
+          "kind": "window",
+          "wallIndex": 1,
+          "offsetCm": 60,
+          "widthCm": 120,
+          "heightCm": 120,
+          "sillHeightCm": 90
+        }
+      ],
+      "obstacles": [
+        {
+          "id": "obs-1",
+          "kind": "column",
+          "x": 180,
+          "y": 20,
+          "widthCm": 30,
+          "depthCm": 30,
+          "heightCm": 280
+        }
+      ],
+      "sections": [],
+      "equipment": {
+        "refrigerator": "side_by_side",
+        "washingMachine": false,
+        "dishwasher": true,
+        "oven": true,
+        "cooktop": true,
+        "microwave": false,
+        "extractorHood": true,
+        "notes": "لوله‌های گاز روی دیوار شمالی، پریز ظرفشویی سمت راست سینک."
+      },
+      "version": 4,
+      "updatedAt": "2026-10-27T00:31:38.836Z",
+      "updatedBy": "u-saeid",
+      "wallProfiles": [
+        {
+          "wallIndex": 0,
+          "endLeanCm": 20
+        }
+      ]
+    }
+  ],
+  "assemblyItems": [
+    {
+      "id": "asm-1",
+      "projectId": "proj-2",
+      "companyId": "co-nirvana",
+      "title": "کابینت زیر سینک S-12",
+      "assigneeId": "u-leila",
+      "status": "problem",
+      "history": [
+        {
+          "id": "ev-1792941442921",
+          "at": "2026-10-25T15:17:22.921Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "problem",
+          "detail": "???: ??? ??? ???? ???"
+        },
+        {
+          "id": "ev-1792959459695",
+          "at": "2026-10-25T20:17:39.695Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "completed"
+        },
+        {
+          "id": "ev-01885e81-daca-4a8b-af6c-2015e1c1e1f7",
+          "at": "2026-10-26T23:47:52.621Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "missing_part_in_progress",
+          "detail": "???: ??? ??? ???? ???"
+        },
+        {
+          "id": "ev-7a238d10-cefa-450e-be0f-b7e6114714d7",
+          "at": "2026-10-27T16:28:07.153Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "problem",
+          "detail": "sjadkjahdskja"
+        }
+      ],
+      "problemReason": "sjadkjahdskja"
+    },
+    {
+      "id": "asm-2",
+      "projectId": "proj-2",
+      "companyId": "co-nirvana",
+      "title": "کمد دیواری W-01",
+      "assigneeId": "u-leila",
+      "status": "completed",
+      "history": [
+        {
+          "id": "ev-1",
+          "at": "2026-10-23T20:38:19.538Z",
+          "actorId": "u-leila",
+          "actorName": "لیلا فرهادی",
+          "action": "completed",
+          "detail": "مونتاژ تکمیل شد"
+        }
+      ]
+    },
+    {
+      "id": "asm-3",
+      "projectId": "proj-2",
+      "companyId": "co-nirvana",
+      "title": "کشوهای عریض D-05",
+      "assigneeId": "u-leila",
+      "status": "problem",
+      "problemReason": "jgjh",
+      "history": [
+        {
+          "id": "ev-2",
+          "at": "2026-10-23T20:38:19.538Z",
+          "actorId": "u-leila",
+          "actorName": "لیلا فرهادی",
+          "action": "problem",
+          "detail": "ریل کشو با نقشه هم‌خوان نیست"
+        },
+        {
+          "id": "ev-1792959465879",
+          "at": "2026-10-25T20:17:45.879Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "problem",
+          "detail": "jgjh"
+        },
+        {
+          "id": "ev-fd3a2140-56d5-4350-a9fb-926c7a4241a3",
+          "at": "2026-10-26T22:47:47.754Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "missing_part_in_progress",
+          "detail": "jgjh"
+        },
+        {
+          "id": "ev-f366190d-6b94-4de2-810c-f5666774fe6e",
+          "at": "2026-10-27T16:30:01.969Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "missing_part_in_progress",
+          "detail": "ریل کشو D-05"
+        },
+        {
+          "id": "ev-85aa7e8c-8f0b-4bbd-b922-88f81ca76ede",
+          "at": "2026-10-27T16:30:12.277Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "missing_part_resolved",
+          "detail": "ریل کشو D-05"
+        }
+      ]
+    }
+  ],
+  "installationItems": [
+    {
+      "id": "inst-1",
+      "projectId": "proj-3",
+      "companyId": "co-nirvana",
+      "title": "کابینت زیر سینک",
+      "location": "آشپزخانه - بخش A",
+      "assigneeId": "u-reza",
+      "status": "completed",
+      "history": [
+        {
+          "id": "ev-3",
+          "at": "2026-10-23T20:38:19.538Z",
+          "actorId": "u-reza",
+          "actorName": "رضا کاظمی",
+          "action": "completed",
+          "detail": "نصب شد"
+        },
+        {
+          "id": "ev-3e3d1f62-3353-4305-9a7a-5a4e8076756a",
+          "at": "2026-10-26T22:47:36.544Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "problem",
+          "detail": "س"
+        },
+        {
+          "id": "ev-c8dc9bc7-851a-46f8-b3e3-7a6238e473f9",
+          "at": "2026-10-26T22:47:40.191Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "completed"
+        },
+        {
+          "id": "ev-68fc7b02-4dcf-46f2-880a-e126bfa47c33",
+          "at": "2026-10-27T16:31:34.672Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "problem",
+          "detail": "dddd"
+        },
+        {
+          "id": "ev-ba78b7f1-cb00-48cb-a45a-c14a644b1a82",
+          "at": "2026-10-27T16:31:42.033Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "completed"
+        }
+      ]
+    },
+    {
+      "id": "inst-2",
+      "projectId": "proj-3",
+      "companyId": "co-nirvana",
+      "title": "کمد دیواری اصلی",
+      "location": "اتاق خواب مستر",
+      "assigneeId": "u-reza",
+      "status": "problem",
+      "history": [
+        {
+          "id": "ev-1792944088031",
+          "at": "2026-10-25T16:01:28.031Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "completed"
+        },
+        {
+          "id": "ev-595e8bfa-47f5-47b8-8585-4817dc84eb30",
+          "at": "2026-10-27T00:19:29.034Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "problem",
+          "detail": "ع"
+        }
+      ],
+      "problemReason": "ع"
+    },
+    {
+      "id": "inst-3",
+      "projectId": "proj-3",
+      "companyId": "co-nirvana",
+      "title": "صفحه روی کابینت",
+      "location": "آشپزخانه - بخش B",
+      "assigneeId": "u-reza",
+      "status": "problem",
+      "history": [
+        {
+          "id": "ev-8b02000e-923f-4e94-a216-20eaa0c0cb80",
+          "at": "2026-10-27T00:15:20.067Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "completed"
+        },
+        {
+          "id": "ev-fe2b3868-f497-4996-b07a-8bb52bbcb0e7",
+          "at": "2026-10-27T00:15:20.324Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "pending"
+        },
+        {
+          "id": "ev-2a21797e-32d1-44f6-a5ff-07ebabaea393",
+          "at": "2026-10-27T00:19:17.754Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "problem",
+          "detail": "ل"
+        }
+      ],
+      "problemReason": "ل"
+    }
+  ],
+  "missingParts": [
+    {
+      "id": "miss-1792959465879",
+      "projectId": "proj-2",
+      "companyId": "co-nirvana",
+      "sourceItemId": "asm-3",
+      "description": "jgjh",
+      "reportedBy": "u-saeid",
+      "status": "in_progress",
+      "createdAt": "2026-10-25T20:17:45.879Z"
+    },
+    {
+      "id": "miss-1792941442921",
+      "projectId": "proj-2",
+      "companyId": "co-nirvana",
+      "sourceItemId": "asm-1",
+      "description": "???: ??? ??? ???? ???",
+      "reportedBy": "u-saeid",
+      "status": "in_progress",
+      "createdAt": "2026-10-25T15:17:22.921Z"
+    },
+    {
+      "id": "miss-1",
+      "projectId": "proj-2",
+      "companyId": "co-nirvana",
+      "sourceItemId": "asm-3",
+      "description": "ریل کشو D-05",
+      "reportedBy": "u-leila",
+      "status": "resolved",
+      "createdAt": "2026-10-23T20:38:19.538Z"
+    }
+  ],
+  "shipments": [
+    {
+      "id": "ship-1",
+      "projectId": "proj-3",
+      "companyId": "co-nirvana",
+      "trackingCode": "TRK-99281",
+      "items": [
+        {
+          "id": "si-1",
+          "name": "کابینت زیر سینک S-12",
+          "listedQty": 1
+        },
+        {
+          "id": "si-2",
+          "name": "درب‌های بالایی U-04",
+          "listedQty": 4
+        },
+        {
+          "id": "si-3",
+          "name": "صفحه گرانیت",
+          "listedQty": 1
+        }
+      ],
+      "history": [
+        {
+          "id": "ev-1792963621473",
+          "at": "2026-10-25T21:27:01.473Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "dispatch_confirmed"
+        },
+        {
+          "id": "ev-eb80df56-7350-4025-a533-f5caaf9858fb",
+          "at": "2026-10-26T22:47:14.967Z",
+          "actorId": "u-saeid",
+          "actorName": "سعید محبی",
+          "action": "receipt_confirmed"
+        }
+      ],
+      "discrepancies": [
+        "si-1: ارسال 1 / دریافت 1 / وضعیت damaged"
+      ],
+      "dispatch": {
+        "items": [
+          {
+            "id": "si-1",
+            "qty": 1,
+            "condition": "good"
+          },
+          {
+            "id": "si-2",
+            "qty": 4,
+            "condition": "good"
+          },
+          {
+            "id": "si-3",
+            "qty": 1,
+            "condition": "good"
+          }
+        ],
+        "actorId": "u-saeid",
+        "actorName": "سعید محبی",
+        "at": "2026-10-25T21:27:01.473Z"
+      },
+      "receipt": {
+        "items": [
+          {
+            "id": "si-1",
+            "qty": 1,
+            "condition": "damaged"
+          },
+          {
+            "id": "si-2",
+            "qty": 4,
+            "condition": "good"
+          },
+          {
+            "id": "si-3",
+            "qty": 1,
+            "condition": "good"
+          }
+        ],
+        "actorId": "u-saeid",
+        "actorName": "سعید محبی",
+        "at": "2026-10-26T22:47:14.967Z"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "id": "faq-1",
+      "question": "پلتفرم برای چه کسانی است؟",
+      "answer": "هم برای شرکت‌های کامل‌خدمت کابینت و هم برای متخصصان و تیم‌های تخصصی که فقط چند ماژول را نیاز دارند.",
+      "keywords": [
+        "شرکت",
+        "متخصص",
+        "ماژول",
+        "مخاطب"
+      ]
+    },
+    {
+      "id": "faq-2",
+      "question": "آیا می‌توان فقط ماژول اندازه‌گیری را خرید؟",
+      "answer": "بله. خرید ماژول فقط همان قابلیت را فعال می‌کند و به‌تنهایی دسترسی به شرکت‌ها یا پروژه‌های دیگران نمی‌دهد.",
+      "keywords": [
+        "خرید",
+        "ماژول",
+        "اندازه‌گیری",
+        "پلن"
+      ]
+    },
+    {
+      "id": "faq-3",
+      "question": "ماژول برنامه‌ریزی چه خروجی‌ای می‌دهد؟",
+      "answer": "یک خروجی دیداری سه‌بعدی و یک خروجی ساخت‌یافته شامل ابعاد، مختصات، دیوارها، بازشوها، موانع و اطلاعات تجهیزات.",
+      "keywords": [
+        "برنامه‌ریزی",
+        "خروجی",
+        "سه بعدی",
+        "داده"
+      ]
+    },
+    {
+      "id": "faq-4",
+      "question": "اگر قطعه‌ای در مونتاژ ناقص باشد چه می‌شود؟",
+      "answer": "وضعیت مشکل ثبت می‌شود، دلیل ذخیره می‌گردد و موضوع برای مدیر پروژه و واحد برش قابل پیگیری می‌ماند. این مورد تکمیل موفق حساب نمی‌شود.",
+      "keywords": [
+        "مونتاژ",
+        "نقص",
+        "قطعه",
+        "برش"
+      ]
+    }
+  ],
+  "plans": [
+    {
+      "id": "plan-planning",
+      "name": "ماژول برنامه‌ریزی",
+      "audience": "specialist",
+      "modules": [
+        "planning"
+      ],
+      "summary": "اندازه‌گیری فضا، مدل سه‌بعدی و خروجی ساخت‌یافته برای متخصصان.",
+      "priceLabel": "قیمت نهایی بعداً اعلام می‌شود"
+    },
+    {
+      "id": "plan-ops",
+      "name": "عملیات کارگاه",
+      "audience": "company",
+      "modules": [
+        "assembly",
+        "cutting",
+        "logistics"
+      ],
+      "summary": "پیگیری مونتاژ، جایگاه برش و حمل با تأیید جداگانه ارسال و دریافت.",
+      "priceLabel": "قیمت نهایی بعداً اعلام می‌شود"
+    },
+    {
+      "id": "plan-company",
+      "name": "مدیریت جامع شرکت",
+      "audience": "company",
+      "modules": [
+        "projects",
+        "planning",
+        "analysis",
+        "cutting",
+        "assembly",
+        "installation",
+        "logistics",
+        "reports",
+        "employees",
+        "settings"
+      ],
+      "summary": "کل جریان از اندازه‌گیری تا نصب، گزارش، نیرو و کنترل دسترسی.",
+      "priceLabel": "قیمت نهایی بعداً اعلام می‌شود"
+    }
+  ],
+  "unansweredQuestions": []
+}

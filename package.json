@@ -6,19 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint app src proxy.ts --quiet",
+    "test": "node --experimental-strip-types --experimental-loader ./src/test-alias-loader.mjs --test src/core/auth/access.test.ts src/core/auth/password.test.ts src/core/auth/rate-limit.test.ts src/core/auth/session-token.test.ts src/core/validation/actions.test.ts src/lib/planning-geometry.test.ts src/services/store/platform-db.test.ts",
+    "check": "npm run test && npx tsc --noEmit && npx eslint app src proxy.ts --quiet",
+    "auth:smoke": "node scripts/auth-smoke.mjs"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.60.0",
     "next": "16.4.2",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "tailwind-merge": "^3.7.0",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.6.1",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
+    "postcss": "^8.5.31",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5"
   }
 }

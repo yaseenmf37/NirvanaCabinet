@@ -1,69 +1,30 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { ArrowLeft, BarChart3, Boxes, CheckCircle2, ClipboardCheck, FileText, Layers3, Ruler, ShieldCheck, Truck, Users } from "lucide-react";
+import "./page.css";
+
+const workflow = [
+  { icon: Ruler, number: "۰۱", title: "اندازه‌گیری دقیق", text: "ابعاد فضا، دیوارهای نامنظم، بازشوها و موانع را ثبت کنید." },
+  { icon: BarChart3, number: "۰۲", title: "تحلیل ورودی پروژه", text: "مدل و فایل پروژه را به یک ورودی روشن برای تیم اجرا تبدیل کنید." },
+  { icon: Boxes, number: "۰۳", title: "مونتاژ هماهنگ", text: "قطعات مشترک را دنبال کنید و مشکل یا کمبود را همان‌جا ثبت کنید." },
+  { icon: ClipboardCheck, number: "۰۴", title: "نصب و تحویل", text: "نصاب همان فهرست را می‌بیند و وضعیت نصب هر قطعه را تکمیل می‌کند." },
+];
+
+const modules = [
+  { icon: Ruler, title: "برنامه‌ریزی و اندازه‌گیری", text: "ساخت مدل فضا با دیوار، قناسی، بازشو، مانع و یادداشت اجرایی." },
+  { icon: FileText, title: "ورودی تحلیل", text: "اتصال فایل پروژه به پروژه درست، با دسترسی کنترل‌شده برای تیم." },
+  { icon: Boxes, title: "مونتاژ و نصب", text: "یک فهرست مشترک، دو وضعیت مستقل برای دو مرحلهٔ واقعی اجرا." },
+  { icon: Truck, title: "حمل و تحویل", text: "ثبت ارسال، دریافت، مغایرت‌ها و تاریخچهٔ تحویل پروژه." },
+];
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  return <main className="public-shell">
+    <nav className="public-nav" aria-label="ناوبری اصلی"><Link href="/" className="public-brand"><span className="public-brand__mark">N</span><span><strong>New Nirvana</strong><small>مدیریت عملیات کابینت</small></span></Link><div className="public-nav__links"><a href="#workflow">جریان کار</a><a href="#modules">ماژول‌ها</a><Link href="/plans">پلن‌ها</Link><Link href="/faq">پرسش‌های متداول</Link></div><div className="public-nav__actions"><Link href="/auth" className="public-button public-button--quiet">ورود</Link><Link href="/plans" className="public-button public-button--solid">شروع همکاری <ArrowLeft size={16} /></Link></div></nav>
+    <section className="public-hero"><div className="public-hero__copy"><span className="public-kicker"><span className="public-kicker__dot" /> زیرساخت عملیاتی صنعت کابینت</span><h1>پروژه‌ات را از اندازه‌گیری تا نصب، <em>یک‌جا</em> مدیریت کن.</h1><p>New Nirvana یک پنل عملیاتی برای مجموعه‌های کابینت‌سازی است؛ جایی که مدل فضا، پروژه، تیم اجرا، قطعات، حمل و گزارش‌ها در یک مسیر قابل پیگیری کنار هم قرار می‌گیرند.</p><div className="public-hero__actions"><Link href="/plans" className="public-button public-button--solid public-button--large">مشاهده پلن‌ها <ArrowLeft size={18} /></Link><Link href="/auth" className="public-button public-button--outline public-button--large">ورود به پنل</Link></div><div className="public-trust"><span><CheckCircle2 size={17} /> پروژه‌محور</span><span><ShieldCheck size={17} /> دسترسی نقش‌محور</span><span><Users size={17} /> مناسب تیم اجرا</span></div></div><div className="public-hero__visual"><div className="public-window"><div className="public-window__bar"><span /><span /><span /><b>نمای کلی عملیات</b></div><div className="public-window__body"><div className="public-window__title"><span><small>پروژهٔ فعال</small><strong>نوسازی آشپزخانه ۱۲</strong></span><i>در جریان</i></div><div className="public-progress"><div><span>پیشرفت اجرای پروژه</span><b>۷۲٪</b></div><span><i style={{ width: "72%" }} /></span></div><div className="public-window__grid"><div><small>قطعات مونتاژ</small><strong>۱۲ / ۱۸</strong><span className="status-good">● ۶ مورد آمادهٔ نصب</span></div><div><small>موارد نیازمند پیگیری</small><strong>۳</strong><span className="status-warn">● ۱ قطعه مفقود</span></div></div><div className="public-window__list"><span><i className="list-dot list-dot--done" /> کمد دیواری W-01 <b>تکمیل</b></span><span><i className="list-dot list-dot--active" /> کابینت زیر سینک S-12 <b>در جریان</b></span><span><i className="list-dot list-dot--wait" /> صفحه روی کابینت <b>در انتظار</b></span></div></div></div></div></section>
+    <section className="public-strip"><div><strong>یک پروژه، یک منبع حقیقت</strong><span>اطلاعات پروژه از تیم اندازه‌گیری تا آخرین مرحلهٔ اجرا گم نمی‌شود.</span></div><Link href="/plans">برای مجموعهٔ خودتان انتخاب کنید <ArrowLeft size={16} /></Link></section>
+    <section className="public-section" id="workflow"><div className="public-section__heading"><span className="public-kicker">جریان کار</span><h2>هر مرحله، ادامهٔ منطقی مرحلهٔ قبل است.</h2><p>به‌جای فایل‌های پراکنده و پیام‌های فراموش‌شده، تیم شما با وضعیت‌های مشخص و تاریخچهٔ قابل پیگیری کار می‌کند.</p></div><div className="workflow-grid">{workflow.map(({ icon: Icon, number, title, text }) => <article className="workflow-card" key={number}><span className="workflow-card__number">{number}</span><Icon size={23} /><h3>{title}</h3><p>{text}</p></article>)}</div></section>
+    <section className="public-section public-section--split" id="modules"><div className="public-section__heading"><span className="public-kicker">ماژول‌ها</span><h2>ابزارهای واقعی برای تصمیم‌های روزمره.</h2><p>هر بخش برای یک نیاز اجرایی ساخته شده و با پروژهٔ انتخاب‌شدهٔ شما کار می‌کند.</p><Link href="/plans" className="public-text-link">مقایسهٔ پلن‌ها <ArrowLeft size={16} /></Link></div><div className="module-stack">{modules.map(({ icon: Icon, title, text }, index) => <article className="module-row" key={title}><span>۰{index + 1}</span><Icon size={21} /><div><h3>{title}</h3><p>{text}</p></div><ArrowLeft size={18} /></article>)}</div></section>
+    <section className="public-section public-section--dark"><div className="public-dark-card"><div><span className="public-kicker public-kicker--light">ساخته‌شده برای رشد مجموعه</span><h2>وقتی عملیات مرتب باشد، تصمیم‌گیری هم سریع‌تر می‌شود.</h2><p>از اولین برداشت اندازه‌ها تا تأیید نصب، همهٔ اعضای تیم روی یک تصویر مشترک از پروژه کار می‌کنند.</p></div><div className="public-dark-card__stats"><span><strong>۱</strong><small>پروژه، یک مسیر</small></span><span><strong>۲</strong><small>تأیید مستقل</small></span><span><strong>∞</strong><small>تاریخچهٔ قابل پیگیری</small></span></div></div></section>
+    <section className="public-cta"><div><span className="public-kicker">قدم بعدی</span><h2>پروژه‌های شما آمادهٔ یک جریان کاری روشن‌ترند.</h2></div><div className="public-hero__actions"><Link href="/plans" className="public-button public-button--solid">دیدن پلن‌ها <ArrowLeft size={17} /></Link><Link href="/faq" className="public-button public-button--outline">پرسش‌های متداول</Link></div></section>
+    <footer className="public-footer"><Link href="/" className="public-brand"><span className="public-brand__mark">N</span><span><strong>New Nirvana</strong><small>مدیریت عملیات کابینت</small></span></Link><span>یک مسیر روشن برای پروژه‌های واقعی.</span><div><Link href="/plans">پلن‌ها</Link><Link href="/faq">FAQ</Link><Link href="/auth">ورود</Link></div></footer>
+  </main>;
 }

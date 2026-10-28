@@ -1,0 +1,36 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:\\Users\\yaseen\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"C:\\Users\\yaseen\\Desktop\\projects\\HiradCode Projects\\new-nirvana\\.claude\\skills\\token-efficiency\\hooks\\context_budget.py\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:\\Users\\yaseen\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"C:\\Users\\yaseen\\Desktop\\projects\\HiradCode Projects\\new-nirvana\\.claude\\skills\\token-efficiency\\hooks\\trajectory_guard.py\""
+          }
+        ],
+        "matcher": "Read|Edit|Write|MultiEdit|NotebookEdit|Grep|Glob|Bash"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:\\Users\\yaseen\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"C:\\Users\\yaseen\\Desktop\\projects\\HiradCode Projects\\new-nirvana\\.claude\\skills\\token-efficiency\\hooks\\session_report.py\""
+          }
+        ]
+      }
+    ]
+  },
+  "env": {}
+}
