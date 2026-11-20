@@ -7,29 +7,40 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint app src proxy.ts --quiet",
-    "test": "node --experimental-strip-types --experimental-loader ./src/test-alias-loader.mjs --test src/core/auth/access.test.ts src/core/auth/password.test.ts src/core/auth/rate-limit.test.ts src/core/auth/session-token.test.ts src/core/validation/actions.test.ts src/lib/planning-geometry.test.ts src/services/store/platform-db.test.ts",
+    "test": "node --experimental-strip-types --experimental-loader ./src/test-alias-loader.mjs --test src/core/auth/access.test.ts src/core/auth/password.test.ts src/core/auth/rate-limit.test.ts src/core/auth/session-token.test.ts src/core/auth/device-token.test.ts src/core/validation/actions.test.ts src/core/validation/skp.test.ts src/core/workflow/gates.test.ts src/domain/library/library.test.ts src/domain/library/library-api.test.ts src/domain/library/forms.test.ts src/lib/cabinet-identity.test.ts src/lib/cabinet-identity.e2e.test.ts src/lib/cabinet-detection.e2e.test.ts src/lib/skp-archive.regression.test.ts src/lib/planning-geometry.test.ts src/lib/skp-files.test.ts src/lib/skp-conversion.test.ts src/services/store/platform-db.test.ts src/services/store/device-store.integration.test.ts src/db/legacy-dry-run.test.ts",
+    "test:ext": "ruby extensions/sketchup-nirvana/test/run_tests.rb",
+    "build:rbz": "ruby extensions/sketchup-nirvana/tools/build_rbz.rb",
     "check": "npm run test && npx tsc --noEmit && npx eslint app src proxy.ts --quiet",
-    "auth:smoke": "node scripts/auth-smoke.mjs"
+    "auth:smoke": "node scripts/auth-smoke.mjs",
+    "legacy:dry-run": "node --experimental-strip-types --experimental-loader ./src/test-alias-loader.mjs scripts/legacy-dry-run.mjs"
   },
   "dependencies": {
+    "@types/three": "^0.186.0",
     "clsx": "^2.1.1",
+    "drizzle-orm": "^0.44.7",
     "lucide-react": "^1.60.0",
     "next": "16.4.2",
+    "openskp": "^1.4.0",
+    "pg": "^8.23.1",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "tailwind-merge": "^3.7.0",
+    "three": "^0.186.1",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^20",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.6.1",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
     "postcss": "^8.5.31",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite": "^8.3.5"
   }
 }
