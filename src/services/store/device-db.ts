@@ -31,15 +31,28 @@ export async function createIntentDb(userId: string, companyId: string, ttlSecon
 }
 
 export async function consumeIntentDb(code: string, input: DeviceInput) {
-  const database = db(); const hash = hashToken(code.trim().toUpperCase()); const nowDate = new Date();
-  const intent = await database.select().from(pairingIntents).where(and(eq(pairingIntents.codeHash, hash), isNull(pairingIntents.consumedAt), gt(pairingIntents.expiresAt, nowDate.toISOString()))).limit(1);
-  if (!intent[0]) throw new DeviceStorageError("pairing code invalid, expired, or already consumed");
-  const row = intent[0]; const deviceId = `dev-${randomBytes(8).toString("hex")}`; const pairedAt = now();
-  const consumed = await database.update(pairingIntents).set({ consumedAt: pairedAt, deviceId }).where(and(eq(pairingIntents.codeHash, hash), isNull(pairingIntents.consumedAt), gt(pairingIntents.expiresAt, nowDate.toISOString()))).returning({ codeHash: pairingIntents.codeHash });
-  if (consumed.length !== 1) throw new DeviceStorageError("pairing code was consumed concurrently");
-  const refreshJti = randomBytes(12).toString("hex");
-  await database.insert(devices).values({ id: deviceId, companyId: row.companyId, userId: row.userId, ...input, pairedAt, lastSeenAt: pairedAt, status: "paired", refreshHash: "", refreshJti, rotationCount: 0 }).onConflictDoUpdate({ target: devices.fingerprint, set: { companyId: row.companyId, userId: row.userId, name: input.name, sketchupVersion: input.sketchupVersion, os: input.os, extensionVersion: input.extensionVersion, pairedAt, lastSeenAt: pairedAt, status: "paired", revokedAt: null, revokeReason: null, refreshHash: "", refreshJti, rotationCount: 0 } });
-  return { deviceId, userId: row.userId, companyId: row.companyId };
+  const database = db();
+  const hash = hashToken(code.trim().toUpperCase());
+  const nowDate = new Date();
+  return database.transaction(async (tx) => {
+    const intent = await tx.select().from(pairingIntents).where(and(eq(pairingIntents.codeHash, hash), isNull(pairingIntents.consumedAt), gt(pairingIntents.expiresAt, nowDate.toISOString()))).limit(1);
+    if (!intent[0]) throw new DeviceStorageError("pairing code invalid, expired, or already consumed");
+    const row = intent[0];
+    const proposedDeviceId = `dev-${randomBytes(8).toString("hex")}`;
+    const pairedAt = now();
+    const consumed = await tx.update(pairingIntents).set({ consumedAt: pairedAt, deviceId: proposedDeviceId }).where(and(eq(pairingIntents.codeHash, hash), isNull(pairingIntents.consumedAt), gt(pairingIntents.expiresAt, nowDate.toISOString()))).returning({ codeHash: pairingIntents.codeHash });
+    if (consumed.length !== 1) throw new DeviceStorageError("pairing code was consumed concurrently");
+
+    const refreshJti = randomBytes(12).toString("hex");
+    // On fingerprint conflict, PostgreSQL returns the existing row's id. The
+    // token must use that returned id, never the proposed id that lost the
+    // conflict.
+    const stored = await tx.insert(devices).values({ id: proposedDeviceId, companyId: row.companyId, userId: row.userId, ...input, pairedAt, lastSeenAt: pairedAt, status: "paired", refreshHash: "", refreshJti, rotationCount: 0 }).onConflictDoUpdate({ target: devices.fingerprint, set: { companyId: row.companyId, userId: row.userId, name: input.name, sketchupVersion: input.sketchupVersion, os: input.os, extensionVersion: input.extensionVersion, pairedAt, lastSeenAt: pairedAt, status: "paired", revokedAt: null, revokeReason: null, refreshHash: "", refreshJti, rotationCount: 0 } }).returning({ id: devices.id });
+    const actualDeviceId = stored[0]?.id;
+    if (!actualDeviceId) throw new DeviceStorageError("device upsert did not return an id");
+    await tx.update(pairingIntents).set({ deviceId: actualDeviceId }).where(eq(pairingIntents.codeHash, hash));
+    return { deviceId: actualDeviceId, userId: row.userId, companyId: row.companyId };
+  });
 }
 
 export async function findDeviceDb(deviceId: string) { return (await db().select().from(devices).where(eq(devices.id, deviceId)).limit(1))[0]; }

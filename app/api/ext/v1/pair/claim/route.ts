@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     const refreshJti = newJti();
     const refresh = createDeviceToken("refresh", { sub: owner.id, devId: deviceId, jti: refreshJti });
     const access = createDeviceToken("access", { sub: owner.id, devId: deviceId, jti: newJti() });
-    setRefreshTokenDb(deviceId, refresh, refreshJti);
+    await setRefreshTokenDb(deviceId, refresh, refreshJti);
 
     return NextResponse.json(
       {
